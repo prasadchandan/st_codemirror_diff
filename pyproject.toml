@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "streamlit_ace_diff"
+version = "0.1.0"
+description = ""
+authors = ["Chandan Prasad M <prasadchandan@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+streamlit = "^0.74.1"
+black = "^20.8b1"
+
+[tool.poetry.dev-dependencies]
+watchdog = "^1.0.2"
+pylint = "^2.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
