@@ -2,3 +2,5 @@ node_modules
 *.egg-info/
 build
 dist
+.vscode
+.venv

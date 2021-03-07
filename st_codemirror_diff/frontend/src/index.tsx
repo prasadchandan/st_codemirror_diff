@@ -1,10 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import DiffMergeView from "./DiffMergeView"
+import StCodeMirrorDiffView from "./StCodeMirrorDiffView"
 
 ReactDOM.render(
   <React.StrictMode>
-    <DiffMergeView />
+    <StCodeMirrorDiffView />
   </React.StrictMode>,
   document.getElementById("root")
 )

@@ -5,25 +5,26 @@ _RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
-        "streamlit_codemirror",
+        "st_codemirror_diff",
         url="http://localhost:3001",
     )
 else:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
     _component_func = components.declare_component(
-        "streamlit_codemirror", path=build_dir
+        "st_codemirror_diff", path=build_dir
     )
 
 
-def streamlit_codemirror(name, left, right, opts, key=None):
-    """Create a new instance of "my_component".
+def st_codemirror_diff(left, right, opts, key=None):
+    """Create a new instance of "st_codemirror_diff".
 
     Parameters
     ----------
-    name: str
-        The name of the thing we're saying hello to. The component will display
-        the text "Hello, {name}!"
+    left: str
+        Content to display in the left panel of the diff view.
+    right: str
+        Content to display in the right panel of the diff view.
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
@@ -31,13 +32,10 @@ def streamlit_codemirror(name, left, right, opts, key=None):
 
     Returns
     -------
-    int
-        The number of times the component's "Click Me" button has been clicked.
-        (This is the value passed to `Streamlit.setComponentValue` on the
-        frontend.)
+    None
 
     """
-    component_value = _component_func(name=name, left=left, right=right, opts=opts, key=key, default=0)
+    component_value = _component_func(left=left, right=right, opts=opts, key=key, default=0)
     return component_value
 
 def streamlit_codemirror_options(loc):
@@ -59,10 +57,10 @@ def streamlit_codemirror_options(loc):
 if not _RELEASE:
     import streamlit as st
     st.set_page_config(
-        page_title="CodeMirror - DiffMergeView Component",
+        page_title="Streamlit CodeMirror diff view component",
         layout="wide"
     )
-    st.subheader("Diff Merge View")
+    st.subheader("CodeMirror diff-view Component")
 
     left_content = """#include <iostream>
 
@@ -93,13 +91,10 @@ Test
 
 int main() {
   int a, b;
-  std::cout << "A: " << a << " B: " << b << std::endl;
+  std::cout << "A: " << a << " B: " 
+            << b << std::endl;
 
   return 0;
 }"""
     opts = streamlit_codemirror_options(st.sidebar)
-
-    # Create an instance of our component with a constant `name` arg, and
-    # print its output value.
-    with st.beta_expander("Show diff"):
-        num_clicks = streamlit_codemirror("World", left_content, right_content, opts)
+    num_clicks = st_codemirror_diff(left_content, right_content, opts)

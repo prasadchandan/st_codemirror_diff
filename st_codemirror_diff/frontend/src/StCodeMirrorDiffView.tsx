@@ -37,11 +37,7 @@ interface State {
   opts: object
 }
 
-/**
- * This is a React-based component template. The `render()` function is called
- * automatically when your component should be re-rendered.
- */
-class DiffMergeView extends StreamlitComponentBase<State> {
+class StCodeMirrorDiffView extends StreamlitComponentBase<State> {
   public state = { 
     numClicks: 0,
     leftContent: 'ABC',
@@ -92,21 +88,13 @@ class DiffMergeView extends StreamlitComponentBase<State> {
     this.onClicked()
   }
 
-  // FIXME Unnecessary for now
-  // componentWillReceiveProps(nextProps){
-  //    this.renderDiffMergeView(nextProps);
-  //}
-
   public render = (): ReactNode => {
     return (
       <div ref={this.setDiffViewRef} style={{height: '100%'}}></div>
     )
   }
 
-  /** Click handler for our "Click Me!" button. */
   private onClicked = (): void => {
-    // Increment state.numClicks, and pass the new value back to
-    // Streamlit via `Streamlit.setComponentValue`.
     this.setState(
       prevState => ({ numClicks: prevState.numClicks + 1 }),
       () => Streamlit.setComponentValue(this.state.numClicks)
@@ -114,4 +102,4 @@ class DiffMergeView extends StreamlitComponentBase<State> {
   }
 }
 
-export default withStreamlitConnection(DiffMergeView)
+export default withStreamlitConnection(StCodeMirrorDiffView)
