@@ -1,11 +1,11 @@
 import setuptools
 
 setuptools.setup(
-    name="streamlit_codemirror",
-    version="0.0.1",
-    author="",
-    author_email="",
-    description="",
+    name="st_codemirror_diff",
+    version="0.1.0",
+    author="Chandan Prasad M",
+    author_email="prasad.chandan@gmail.com",
+    description="Streamlit component wrapping the diff capability available in codemirror",
     long_description="",
     long_description_content_type="text/plain",
     url="",
