@@ -1,1 +1,1 @@
-recursive-include streamlit_codemirror/frontend/build *
+recursive-include st_codemirror_diff/frontend/build *
